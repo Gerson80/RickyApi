@@ -1,9 +1,9 @@
 <script setup>
-import Inicio from '../components/Inicio.vue'
+import Inicio from '../components/Card.vue'
 </script>
 
 <template>
-  <main>
+  <main >
     <Inicio />
   </main>
 </template>

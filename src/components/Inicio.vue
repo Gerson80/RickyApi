@@ -1,5 +1,9 @@
+
+
 <script>
+import Card from '@/components/Card.vue'
 import axios from 'axios'
+
 
 let API_URL = `https://rickandmortyapi.com/api/character`
 
@@ -8,7 +12,8 @@ export default {
   data() {
     return {
       info: [],
-      cont:2
+      cont:2,
+      datos:[]
     }
   },
 
@@ -16,7 +21,10 @@ export default {
     axios.get(API_URL)
       .then((response) => {
         this.info = response.data.info;
+        this.datos=response.data;
       })
+   
+      
   },
 
   methods: {
@@ -26,11 +34,19 @@ export default {
       axios.get(API_URL)
       .then((response) => {
         console.log(response.config)
+        this.datos=response.data;
         this.info = response.data.info;
       })
       this.cont++
-    }
+    },
+
   },
+
+
+
+  components:{
+    Card
+  }
 
 }
 
@@ -38,33 +54,35 @@ export default {
 
 <template>
   
-  <div class="max-w-sm w-full lg:max-w-full lg:flex">
 
-  <img class="w-96 h-96  mr-4" src="../imagenes/Rick.jpg" alt="Avatar of Jonathan Reinink">
-  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-    <div class="mb-8">
-      <p class="text-sm text-gray-600 flex items-center">
-        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-        </svg>
-        Members only
-      </p>
-      <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+  
+
+    <div class="text-sm text-gray-600 flex">
+      <img class="w-96 h-full rounded-xl mr-4" src="../imagenes/Rick.jpg" alt="Avatar of Jonathan Reinink">
+                  
     </div>
-    <div class="flex items-center">
+    <div >          
+      <h2 class="text-black font-bold text-4xl mb-2">Album de "Rick and Morty" de  {{ info.count }} personajes</h2>
+      <p class="text-white font-bold text-2xl mb-2">Este albun contiene {{ info.pages }} paginas</p>
       
-   
-   
-      <div class="text-sm">
-        <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-        <p class="text-gray-600">Aug 18</p>
+      <p class="text-black font-bold text-2xl">Sinopsis de la serie</p>
+      <p class="text-white text-2xl">Después de haber estado desaparecido durante casi 20 años, Rick Sánchez llega de imprevisto a la puerta de la casa de su hija Beth y se va a vivir con ella y su familia utilizando el garaje como su laboratorio personal.</p>
+      <div class="mb-8 grid grid-cols-3">
+        <p class="text-black font-bold text-2xl col-span-2">Cantidad de episodios:</p>        
+        <p class="text-white font-bold text-2xl">61</p>
       </div>
-    </div>
-  </div>
-</div>
-  <h2>Hay {{ info.count }} personajes en el programa de Rick & Morty</h2>
- 
-  <h2>Hay {{ info.next }} </h2>
+      <div class="mb-8 grid grid-cols-3">
+        <p class="text-black font-bold text-2xl col-span-2">Cantidad de temporadas:</p>
+        <p class="text-white font-bold text-2xl">6</p>
+      </div>
+      <div class="mb-8 grid grid-cols-3">
+        <p class="text-black font-bold text-2xl col-span-2">Creadores del programa:</p>   
+        <p class="text-white font-bold text-2xl">Justin Roiland, Dan Harmon</p>
+      </div>
+     
+    </div>               
+                
+  
+
 
 </template>

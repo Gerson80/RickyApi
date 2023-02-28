@@ -1,12 +1,13 @@
 <script setup>
 import Personajes from "../components/Personajes.vue";
+import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
   <div>
-    <h1>Personajes del programa</h1>
 
     <Personajes />
+    <Footer />
   </div>
 </template>
 
