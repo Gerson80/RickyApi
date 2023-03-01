@@ -12,7 +12,7 @@
                 <div class="px-4 hover:bg-lime-500 hover:rounded-xl active:bg-green-500  focus:ring-green-300 ...">
                     <RouterLink to="/personajes">Personajes</RouterLink>
                 </div>
-       
+ 
 
                 
             </nav>
